@@ -257,6 +257,7 @@ sudo apt-get install gz-harmonic
 ```
 
 Install ros_gz from the non official binary packages from apt.
+
 https://gazebosim.org/docs/all/ros_installation/
 
 ```
@@ -266,12 +267,6 @@ sudo apt-get install ros-humble-ros-gzharmonic
 Check the Install
 ```
 gz sim
-```
-
-Uninstalling binary install
-
-```
-sudo apt remove gz-harmonic && sudo apt autoremove
 ```
 
 ### Install Ardupilot Gazebo
@@ -315,8 +310,35 @@ cd ~/ardu_ws
 colcon build --packages-up-to ardupilot_gz_bringup
 ```
 
+Test the install
 
+```
+cd ~/ardu_ws
+source install/setup.bash
+colcon test --packages-select ardupilot_sitl ardupilot_dds_tests ardupilot_gazebo ardupilot_gz_applications ardupilot_gz_description ardupilot_gz_gazebo ardupilot_gz_bringup
+colcon test-result --all --verbose
+```
 
+Run the Simulation 
+```
+source install/setup.bash
+ros2 launch ardupilot_gz_bringup iris_runway.launch.py
+```
+
+Other Models 
+
+* iris Runway (Copter)
+```
+ros2 launch ardupilot_gz_bringup iris_runway.launch.py
+```
+* Iris Maze (Copter)
+```
+ros2 launch ardupilot_gz_bringup iris_maze.launch.py
+```
+* WildThumper (Rover)
+```
+ros2 launch ardupilot_gz_bringup wildthumper.launch.py
+```
 
 
 
