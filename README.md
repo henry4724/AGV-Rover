@@ -12,12 +12,13 @@ sudo apt update
 sudo apt upgrade 
 ```
 
-##Set up the Ardupilot Build Environment
+## Set up the Ardupilot Build Environment
 
 https://ardupilot.org/dev/docs/building-setup-linux.html#building-setup-linux
 
 Instal Git
-```sudo apt-get install git
+```
+sudo apt-get install git
 ```
 
 Clone the ardupilot repo
@@ -27,14 +28,20 @@ cd ardupilot
 ```
 
 Form the cloned repository install ardupilot required packages 
-```Tools/environment_install/install-prereqs-ubuntu.sh -y
+
 ```
+Tools/environment_install/install-prereqs-ubuntu.sh -y
+```
+
 Reload the path
-```. ~/.profile
+
+```
+. ~/.profile
 ```
 
 Build the Code 
-```./waf configure --board Pixhawk6c
+```
+./waf configure --board Pixhawk6c
 ./waf rover
 ```
 
@@ -75,6 +82,7 @@ curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-a
 
 sudo dpkg -i /tmp/ros2-apt-source.deb
 ```
+
 Update your apt repository caches
 
 ```
@@ -83,22 +91,31 @@ sudo apt upgrade
 ```
 
 Desktop Install
-```sudo apt install ros-humble-desktop
+
+```
+sudo apt install ros-humble-desktop
 ```
 Development tools
-```sudo apt install ros-dev-tools
+
+```
+sudo apt install ros-dev-tools
 ```
 Sourcing the setup script
-```Sourcing the setup script
+
+```
+Sourcing the setup script
 ```
 
 ### ROS2 Test code 
 Talker Node 
+
 ```
 source /opt/ros/humble/setup.bash
 ros2 run demo_nodes_cpp talker
 ```
+
 Listener Node
+
 ```
 source /opt/ros/humble/setup.bash
 ros2 run demo_nodes_py listener
@@ -110,6 +127,7 @@ https://ardupilot.org/dev/docs/ros2.html
 
 
 Clone the required repositories using vcs and a ros2.repos files.
+
 ```
 mkdir -p ~/ardu_ws/src
 cd ~/ardu_ws
@@ -166,7 +184,8 @@ microxrceddsgen -help
 #     * IDL files.
 ```
 
-Build the Workspace 
+Build the Workspace
+ 
 ```
 cd ~/ardu_ws
 colcon build --packages-up-to ardupilot_dds_tests
@@ -209,7 +228,8 @@ ros2 topic echo /ap/geopose/filtered
 
 Can launch mavproxy in another terminal aswell
 
-```mavproxy.py --console --map --aircraft test --master=:14550
+```
+mavproxy.py --console --map --aircraft test --master=:14550
 ```
 
 ## ROS 2 with Gazebo
@@ -239,16 +259,19 @@ sudo apt-get install gz-harmonic
 Install ros_gz from the non official binary packages from apt.
 https://gazebosim.org/docs/all/ros_installation/
 
-```sudo apt-get install ros-humble-ros-gzharmonic
+```
+sudo apt-get install ros-humble-ros-gzharmonic
 ```
 
 Check the Install
-```gz sim
+```
+gz sim
 ```
 
 Uninstalling binary install
 
-```sudo apt remove gz-harmonic && sudo apt autoremove
+```
+sudo apt remove gz-harmonic && sudo apt autoremove
 ```
 
 ### Install Ardupilot Gazebo
@@ -264,7 +287,8 @@ vcs import --input https://raw.githubusercontent.com/ArduPilot/ardupilot_gz/main
 
 Set the gz version
  
-```export GZ_VERSION=harmonic
+```
+export GZ_VERSION=harmonic
 ```
 
 Add Gazebo APT sources.
