@@ -1,6 +1,11 @@
-# Using the Ardupilot Simulation  
+# Using the Ardupilot Simulation
 
+![Ardupilot Logo](assets/ardupilotlogo.jpg)
+
+For more inforamtion about ardupilot go to:
 https://ardupilot.org/
+
+
 
 ## Install Ubuntu 22.04.5
 
@@ -340,8 +345,44 @@ ros2 launch ardupilot_gz_bringup iris_maze.launch.py
 ros2 launch ardupilot_gz_bringup wildthumper.launch.py
 ```
 
+## Cartographer SLAM with ROS 2 in SITL
 
+https://ardupilot.org/dev/docs/ros2-cartographer-slam.html
 
+### Install 
+
+Clone repo.
+```
+cd ~/ardu_ws/src
+git clone https://github.com/ArduPilot/ardupilot_ros.git
+```
+
+update rosdep 
+```
+cd ~/ardu_ws
+rosdep install --from-paths src --ignore-src -r --skip-keys gazebo-ros-pkgs
+```
+
+Build 
+```
+cd ~/ardu_ws
+source ./install/setup.bash
+colcon build --packages-up-to ardupilot_ros ardupilot_gz_bringup
+```
+
+### Test 
+
+```
+source ~/ardu_ws/install/setup.sh
+ros2 launch ardupilot_gz_bringup iris_maze.launch.py
+```
+
+Launch In another terminal 
+
+```
+source ~/ardu_ws/install/setup.sh
+ros2 launch ardupilot_ros cartographer.launch.py
+```
 
 
 
